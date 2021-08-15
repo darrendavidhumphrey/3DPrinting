@@ -17,7 +17,7 @@ bandInsetFromEdge = 1.5;  // How far band is from each end
 // When cutting using the difference operator, it is necessary
 // for the cutting tool to be slightly larger than the target to
 // ensure that math errors don't happen
-// "e" is the global 
+// "e" is the global fudge factor for cutting operations
 e = 0.2;
 
 // FA is minimum angle for an arc.  Smaller = smoother
@@ -34,7 +34,7 @@ module cylinder_oih(inner,outer,height) {
     difference() {
         offset = 1;
         cylinder(r=outer,h=height);
-        translate([0,0,-offset]);
+        translate([0,0,-offset])
         cylinder(r=inner,h=height+offset);
     }
 }
@@ -43,7 +43,7 @@ module cylinder_oih(inner,outer,height) {
 module cylinder_oth(outer,thickness,height) {
     difference() {
         cylinder(r=outer,h=height);
-        translate([0,0,-e]);
+        translate([0,0,-e])
         cylinder(r=outer-thickness,h=height+e);
     }
 }
@@ -60,6 +60,7 @@ module half_cylinder_oth(outer,thickness,height) {
 
 
 difference() { 
+
     // Start with cylinder for main body
     cylinder_oih(innerRad,outerRad,height);
 
