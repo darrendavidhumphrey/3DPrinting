@@ -1,6 +1,6 @@
 
-outerRad = 21.5;
-innerRad = 10.5;
+outerRad = 21.5/2;
+innerRad = 10.5/2;
 height = 40;
 bandWidth = 8;
 bandThickness = 3;
